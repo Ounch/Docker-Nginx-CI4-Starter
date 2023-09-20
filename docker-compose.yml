@@ -1,0 +1,36 @@
+version: '3'
+services:
+  ci4:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    user: www-data:www-data
+    volumes:
+      - ./app/:/var/www/html:rw
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    container_name: app_${PROJECT_NAME}
+    privileged: true
+    networks:
+      - my_network
+
+  nginx:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    # image: nginx:latest
+    ports:
+      - "${PROJECT_PORT}:8080"
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d
+      - ./logs/nginx:/var/log/nginx/
+      - ./app/:/var/www/html:rw
+    container_name: web_${PROJECT_NAME}
+    privileged: true
+    depends_on:
+      - ci4
+    networks:
+      - my_network
+
+networks:
+  my_network:

@@ -1,0 +1,8 @@
+172.28.0.1 - - [20/Sep/2023:10:10:15 +0000] "GET / HTTP/1.1" 200 17811 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36" "-"
+172.28.0.1 - - [20/Sep/2023:10:10:15 +0000] "GET /favicon.ico HTTP/1.1" 403 25 "http://localhost:8080/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36" "-"
+172.29.0.1 - - [20/Sep/2023:10:20:06 +0000] "GET / HTTP/1.1" 200 17805 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36" "-"
+172.29.0.1 - - [20/Sep/2023:10:20:06 +0000] "GET /favicon.ico HTTP/1.1" 403 25 "http://localhost:8080/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36" "-"
+172.29.0.1 - - [20/Sep/2023:10:20:07 +0000] "GET / HTTP/1.1" 200 17790 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36" "-"
+172.29.0.1 - - [20/Sep/2023:10:20:07 +0000] "GET /favicon.ico HTTP/1.1" 403 25 "http://localhost:8080/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36" "-"
+192.168.80.1 - - [20/Sep/2023:12:08:29 +0000] "GET / HTTP/1.1" 200 17811 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36" "-"
+192.168.80.1 - - [20/Sep/2023:12:08:30 +0000] "GET /favicon.ico HTTP/1.1" 403 25 "http://localhost:8080/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36" "-"
