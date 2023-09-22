@@ -12,4 +12,4 @@ up:
 	docker exec app_${PROJECT_NAME} sh -c "php spark migrate:status"
 
 down:
-	docker-compose down
+	docker-compose -p ${PROJECT_NAME} down
