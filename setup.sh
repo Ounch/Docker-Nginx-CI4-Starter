@@ -1,5 +1,15 @@
 #!/bin/bash
 
+unameOut="$(uname -s)"
+case "${unameOut}" in
+    Linux*)     machine=Linux;;
+    Darwin*)    machine=Mac;;
+    CYGWIN*)    machine=Cygwin;;
+    MINGW*)     machine=MinGw;;
+    *)          machine="UNKNOWN:${unameOut}"
+esac
+
+
 echo "**************************************"
 echo "Setup Nginx & CodeIgniter Docker Image"
 echo "**************************************"
@@ -29,22 +39,46 @@ echo "Creating CI .env file"
 cp -f ./app/env ./app/.env
 
 if [[ ! -z "$mysql_host" ]]; then
-    sed -i "" "s/database.default.hostname = .*/database.default.hostname = $mysql_host/" ./app/.env
+    if [ "$machine" == "Mac" ]; then
+        sed -i "" "s/.*database.default.hostname = .*/database.default.hostname = $mysql_host/" ./app/.env
+    elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+        sed -i "s/.*database.default.hostname = .*/database.default.hostname = $mysql_host/" ./app/.env
+    fi
 fi
 if [[ ! -z "$mysql_user" ]]; then
-    sed -i "" "s/database.default.username = .*/database.default.username = $mysql_user/" ./app/.env
+    if [ "$machine" == "Mac" ]; then
+        sed -i "" "s/.*database.default.username = .*/database.default.username = $mysql_user/" ./app/.env
+    elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+        sed -i "s/.*database.default.username = .*/database.default.username = $mysql_user/" ./app/.env
+    fi
 fi
 if [[ ! -z "$mysql_user_password" ]]; then
-    sed -i "" "s/database.default.password = .*/database.default.password = $mysql_user_password/" ./app/.env
+    if [ "$machine" == "Mac" ]; then
+        sed -i "" "s/.*database.default.password = .*/database.default.password = $mysql_user_password/" ./app/.env
+    elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+        sed -i "s/.*database.default.password = .*/database.default.password = $mysql_user_password/" ./app/.env
+    fi
 fi
 if [[ ! -z "$mysql_database" ]]; then
-    sed -i "" "s/database.default.database = .*/database.default.database = $mysql_database/" ./app/.env
+    if [ "$machine" == "Mac" ]; then
+        sed -i "" "s/.*database.default.database = .*/database.default.database = $mysql_database/" ./app/.env
+    elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+        sed -i "s/.*database.default.database = .*/database.default.database = $mysql_database/" ./app/.env
+    fi
 fi
 if [[ ! -z "$mysql_database" ]]; then
-    sed -i "" "s/database.default.DBDriver = .*/database.default.DBDriver = MySQLi/" ./app/.env
+    if [ "$machine" == "Mac" ]; then
+        sed -i "" "s/.*database.default.DBDriver = .*/database.default.DBDriver = MySQLi/" ./app/.env
+    elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+        sed -i "s/.*database.default.DBDriver = .*/database.default.DBDriver = MySQLi/" ./app/.env
+    fi
 fi
 if [[ ! -z "$mysql_port" ]]; then
-    sed -i "" "s/database.default.port = .*/database.default.port = $mysql_port/" ./app/.env
+    if [ "$machine" == "Mac" ]; then
+        sed -i "" "s/.*database.default.port = .*/database.default.port = $mysql_port/" ./app/.env
+    elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+        sed -i "s/.*database.default.port = .*/database.default.port = $mysql_port/" ./app/.env
+    fi
 fi    
 
 echo "Building Docker Image"
