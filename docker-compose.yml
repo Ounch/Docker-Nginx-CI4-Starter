@@ -6,7 +6,8 @@ services:
       dockerfile: Dockerfile
     user: www-data:www-data
     volumes:
-      - ./app/:/var/www/html:rw
+      - ./app:/var/www/html:rw
+      - ./etc:/usr/local/etc:rw
     extra_hosts:
       - "host.docker.internal:host-gateway"
     container_name: app_${PROJECT_NAME}
@@ -23,8 +24,8 @@ services:
       - "${PROJECT_PORT}:8080"
     volumes:
       - ./nginx/conf.d:/etc/nginx/conf.d
-      - ./logs/nginx:/var/log/nginx/
-      - ./app/:/var/www/html:rw
+      - ./logs/nginx:/var/log/nginx
+      - ./app:/var/www/html:rw
     container_name: web_${PROJECT_NAME}
     privileged: true
     depends_on:
